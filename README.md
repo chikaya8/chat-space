@@ -45,7 +45,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :messages
-- hasu_many :groups_users
+- has_many :groups_users
 - has_many :groups, throught: :groups_users
 
 ## groupsテーブル
