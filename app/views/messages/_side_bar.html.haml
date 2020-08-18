@@ -4,20 +4,15 @@
       .top-items__name
         = current_user.name
       .top-items__icons
-        = link_to "#", class: "icon-edit" do
+        = link_to new_group_path, class: "icon-edit" do
           = icon('fas', 'edit')
         = link_to edit_user_path(current_user), class: "icon-edit" do
           = icon('fas', 'cog')
   .side-bar__group-list
-    = link_to "#", class:"group-list" do
+    - current_user.groups.each do |group|
       .group-list
-        .group-list__name
-          tecacamp
-        .group-list__message
-          まだメッセージがありません
-
-      .group-list
-        .group-list__name
-          teca
-        .group-list__message
-          まだメッセージがありません
+        = link_to edit_group_path(group), class:"group-list" do
+          .group-list__name
+            =group.name
+          .group-list__message
+            まだメッセージがありません
