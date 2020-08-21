@@ -36,6 +36,10 @@
       }
     }
   }
+  a {
+    color: white;
+    text-decoration: none;
+  }
   &__group-list{
     background-color: #2f3e51;
     height: calc(100vh - 100px);
@@ -96,7 +100,8 @@
     height: calc(100vh - 190px);
     padding-top: 35px;
     padding-left: 40px;
-    .message-box{
+    overflow: scroll;
+    &__message-box{
       &__info{
         display: flex;
         &__name{
@@ -127,16 +132,22 @@
         background-color: white;
         width: calc(100vw - 90px);
         height: 50px;
-        display: flex;
-        justify-content: space-between;
+        position: relative;
         align-items: center;
+        color: #999999;
         &__message{
-          color: #999999;
           padding-left: 15px;
+          border-style: none;
+          width: 100%;
+          height: 50px;
         }
         &__image{
+          color: black;
           padding-right: 10px;
           font-size: 25px;
+          position: absolute;
+          top:6px;
+          right: 0px;
         }
       }
       &__send{
@@ -146,6 +157,8 @@
         }
         &__btn{
           background-color: #38aef0;
+          margin: 20px 50px 20px 0;
+          border: none;
           height: 50px;
           font-size: 16px;
           color: #fff;
