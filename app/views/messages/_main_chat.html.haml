@@ -2,45 +2,50 @@
   .chat-main__group-info
     .main-header
       .main-header__group-name
-        test
+        =@group.name
         .main-header__member-name
-          member : chikaya
+          Member :
+          - @group.users.each do |user|
+            =user.name
       .main-header__edit
-        = link_to "#", class:"edit" do
+        = link_to edit_group_path(@group), class:"edit" do
           .main-header__edit-btn
             Edit
   .chat-main__message-list
-    .message-box
-      .message-box__info
-        .message-box__info__name
-          chikaya
-        .message-box__info__date
-          2020/8/12(wed) 17:43:09
-      .message-box__message
-        おはよう！
+    = render @messages
 
-    .message-box
-      .message-box__info
-        .message-box__info__name
-          chikaya
-        .message-box__info__date
-          2020/8/12(wed) 19:03:06
-      .message-box__message
-        こんばんは。
   .chat-main__message-form
-    .input-box
-      .input-box__content
-        .input-box__content__message
-          .input-box__content__message__btn
-            type a message  
-        .input-box__content__image
-          .input-box__content__image__btn
-          %label{class: "input-box__image"}
-            = icon('fas', 'image')
-            %input{type: "file", class:'Hidden'}
-            -# <i class="far image Form__icon"></i>
-      .input-box__send
-        = link_to "#", class:"send" do
-          .input-box__send__btn
-            Send
 
+    = form_with model: [@group, @message], html: {class: "input-box"}, local: true do |f|
+      .input-box__content
+        = f.text_field :content, class: 'input-box__content__message', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__content__image' do
+          = icon('far', 'image', class: 'input-box__image')
+          = f.file_field :image, class: 'Hidden'
+      = f.submit 'Send', class: 'input-box__send__btn' 
+
+
+
+
+
+
+
+
+-#   .chat-main__message-form
+-#     .input-box
+-#       .input-box__content
+-#         .input-box__content__message
+-#           .input-box__content__message__btn
+-#             type a message  
+-#         .input-box__content__image    
+-#           .input-box__content__image__btn
+-#             %label{class: "input-box__image"}
+-#               = icon('fas', 'image')
+-#               %input{type: "file", class:'Hidden'}
+-#               -# <i class="far image Form__icon"></i>
+-#       .input-box__send
+-#         = link_to "#", class:"send" do
+-#           .input-box__send__btn
+-#             send
+-# .MessageField
+-#   = render @messages
