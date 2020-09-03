@@ -57,7 +57,6 @@ $(function(){
       $('.chat-main__message-list').animate({ scrollTop: $('.chat-main__message-list')[0].scrollHeight});
       $('form')[0].reset();
       $('.input-box__send__btn').removeAttr('data-disable-with')
-      console.log(data)
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
